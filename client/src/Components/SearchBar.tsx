@@ -1,7 +1,13 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 
-const recentlySearched: object[] = [
+interface SearchBarOption {
+  key: string;
+  value: string;
+  text: string;
+}
+
+const recentlySearched: SearchBarOption[] = [
   {
     key: 'undyingfire',
     value: 'undyingfire',

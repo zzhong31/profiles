@@ -13,13 +13,16 @@ export default () => {
     >
       <div className="ui center aligned container">
         <div className="ui horizontal inverted small divided link list">
-          <a className="item" href="./">
-            About
+          <a className="item" href="#topOfPage">
+            Home
           </a>
-          <a className="item" href="./">
+          <a
+            className="item"
+            href="https://www.linkedin.com/in/zhenyu-zhong-32a46358/"
+          >
             Contact
           </a>
-          <a className="item" href="./">
+          <a className="item" href="https://github.com/zzhong31">
             Github
           </a>
         </div>
