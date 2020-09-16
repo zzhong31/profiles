@@ -29,14 +29,15 @@ export default (props: IProps) => {
         userInfo = await axios.get(
           `/api/account/basicinfo/${realm}/${userName}`
         );
+        console.log(userInfo);
       } catch (err) {
         setInvalidSearch(true);
         return null;
       }
 
       const dataToSend: AccountMetadata = userInfo.data[0];
-      if (!invalidSearch) {
-        setInvalidSearch(true);
+      if (invalidSearch) {
+        setInvalidSearch(false);
       }
       setSelectedUserInfo(dataToSend);
       setRankInfo(userInfo.data[1]);

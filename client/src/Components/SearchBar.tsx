@@ -7,23 +7,7 @@ interface SearchBarOption {
   text: string;
 }
 
-const recentlySearched: SearchBarOption[] = [
-  {
-    key: 'undyingfire',
-    value: 'undyingfire',
-    text: 'undyingfire'
-  },
-  {
-    key: 'seip',
-    value: 'seip',
-    text: 'seip'
-  },
-  {
-    key: 'fermatahyde',
-    value: 'fermatahyde',
-    text: 'fermatahyde'
-  }
-];
+const recentlySearched: SearchBarOption[] = [];
 
 interface IProps {
   handleFormSubmit: any;
