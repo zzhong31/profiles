@@ -8,6 +8,7 @@ import { AccountMetadata } from '../../../../src/routes/BasicAccountInfo';
 
 interface IProps {
   currentUserName: string | null;
+  handleFormSubmit: any;
 }
 
 export default (props: IProps) => {
@@ -34,7 +35,9 @@ export default (props: IProps) => {
       }
 
       const dataToSend: AccountMetadata = userInfo.data[0];
-
+      if (!invalidSearch) {
+        setInvalidSearch(true);
+      }
       setSelectedUserInfo(dataToSend);
       setRankInfo(userInfo.data[1]);
       setStillLoading(false);
@@ -43,7 +46,7 @@ export default (props: IProps) => {
     if (currentUserName) {
       getProfileDetails('na1', currentUserName);
     }
-  }, [currentUserName]);
+  }, [currentUserName, invalidSearch]);
   return (
     <div className="ui segment" style={{ minHeight: '80px' }}>
       {invalidSearch ? (
@@ -52,7 +55,7 @@ export default (props: IProps) => {
             Summoner not found, please check your spelling
           </div>
           <div style={{ marginTop: '10px' }}>
-            <SearchBar />
+            <SearchBar handleFormSubmit={props.handleFormSubmit} />
           </div>
         </React.Fragment>
       ) : stillLoading ? (
