@@ -3,8 +3,8 @@ import axios from 'axios';
 
 import ProfileBanner from './ProfileBanner';
 import MatchHistorySegment from './MainProfileSegment';
-
-//http://localhost:5000/api/account/basicinfo/na1/seip
+import SearchBar from '../SearchBar';
+import { AccountMetadata } from '../../../../src/routes/BasicAccountInfo';
 
 interface IProps {
   currentUserName: string | null;
@@ -13,14 +13,17 @@ interface IProps {
 export default (props: IProps) => {
   const [stillLoading, setStillLoading] = useState(true);
   const [invalidSearch, setInvalidSearch] = useState(false);
+  const [
+    selectedUserInfo,
+    setSelectedUserInfo
+  ] = useState<AccountMetadata | null>(null);
+  const [rankInfo, setRankInfo] = useState<[]>([]);
 
   const { currentUserName } = props;
 
   useEffect(() => {
-    console.log(currentUserName);
-
     const getProfileDetails = async (realm: string, userName: string) => {
-      let userInfo: object;
+      let userInfo: any;
       try {
         userInfo = await axios.get(
           `http://localhost:5000/api/account/basicinfo/${realm}/${userName}`
@@ -29,8 +32,12 @@ export default (props: IProps) => {
         setInvalidSearch(true);
         return null;
       }
+
+      const dataToSend: AccountMetadata = userInfo.data[0];
+
+      setSelectedUserInfo(dataToSend);
+      setRankInfo(userInfo.data[1]);
       setStillLoading(false);
-      console.log(userInfo);
     };
 
     if (currentUserName) {
@@ -40,17 +47,22 @@ export default (props: IProps) => {
   return (
     <div className="ui segment" style={{ minHeight: '80px' }}>
       {invalidSearch ? (
-        <div className="ui header center aligned">
-          Summoner not found, please check your spelling
-        </div>
+        <React.Fragment>
+          <div className="ui header center aligned">
+            Summoner not found, please check your spelling
+          </div>
+          <div style={{ marginTop: '10px' }}>
+            <SearchBar />
+          </div>
+        </React.Fragment>
       ) : stillLoading ? (
         <div className="ui active inverted dimmer">
           <div className="ui text loader">Loading</div>
         </div>
       ) : (
         <React.Fragment>
-          <ProfileBanner />
-          <MatchHistorySegment />
+          <ProfileBanner selectedProfile={selectedUserInfo} />
+          <MatchHistorySegment selectedRankInfo={rankInfo} />
         </React.Fragment>
       )}
     </div>
