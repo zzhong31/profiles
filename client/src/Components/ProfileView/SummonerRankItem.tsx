@@ -37,6 +37,7 @@ export default (props: IProps) => {
       (props.rankInfo.wins / (props.rankInfo.wins + props.rankInfo.losses)) *
         100
     );
+    isUnranked = false;
   }
 
   return (
@@ -52,6 +53,8 @@ export default (props: IProps) => {
           <span>{props.queueToDisplay}</span>
         </div>
         {isUnranked ? (
+          <div className="header">Unranked</div>
+        ) : (
           <React.Fragment>
             <div className="meta">
               <span>{`${props.rankInfo.wins} - ${props.rankInfo.losses}`}</span>
@@ -60,8 +63,6 @@ export default (props: IProps) => {
               <span>{`${winPercentage}% WR`}</span>
             </div>
           </React.Fragment>
-        ) : (
-          <div className="header">Unranked</div>
         )}
       </div>
     </div>

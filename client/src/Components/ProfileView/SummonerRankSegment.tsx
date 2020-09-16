@@ -35,9 +35,9 @@ export default (props: IProps) => {
           />
         );
       }
-    } else {
-      return <SummonerRankItem queueToDisplay={queueToDisplay} rankInfo={{}} />;
     }
+
+    return <SummonerRankItem queueToDisplay={queueToDisplay} rankInfo={{}} />;
   };
 
   return (
