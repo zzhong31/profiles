@@ -17,7 +17,9 @@ export default (props: IProps) => {
               </a>
             </div>
             <div className="right floated six wide column">
-              <SearchBar handleFormSubmit={props.handleFormSubmit} />
+              <div>
+                <SearchBar handleFormSubmit={props.handleFormSubmit} />
+              </div>
             </div>
           </div>
         </div>

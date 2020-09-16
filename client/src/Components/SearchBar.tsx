@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Dropdown, DropdownProps } from 'semantic-ui-react';
 
+import GetWindowDimensions from '../Helpers/GetWindowDimensions';
+
 interface SearchBarOption {
   key: string;
   value: string;
@@ -16,6 +18,14 @@ interface IProps {
 export default (props: IProps) => {
   const [selectedValue, setSelectedValue] = useState<string>('');
   const [searchOptions, setSearchOptions] = useState(recentlySearched);
+
+  const windowDimension = GetWindowDimensions().width;
+
+  let searchBarPlaceholder = 'Search for a summoner...';
+
+  if (windowDimension < 768) {
+    searchBarPlaceholder = 'Search...';
+  }
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -54,7 +64,7 @@ export default (props: IProps) => {
   return (
     <form className="ui form" name="mainSummonerSearch" onSubmit={submitForm}>
       <Dropdown
-        placeholder="Search for a summoner..."
+        placeholder={searchBarPlaceholder}
         fluid
         search
         selection
@@ -66,6 +76,7 @@ export default (props: IProps) => {
         allowAdditions
         onAddItem={handleAddition}
         additionLabel="Search for: "
+        compact
       />
     </form>
   );
