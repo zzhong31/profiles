@@ -9,7 +9,6 @@ export default () => {
 
   const [userName, setUserName] = useState(initialUserName);
   const searchValueChanged = (value: string) => {
-    console.log(value);
     setUserName(value);
     window.history.pushState({}, '', `?userName=${value}`);
   };
