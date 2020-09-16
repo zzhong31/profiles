@@ -62,7 +62,7 @@ export default (props: IProps) => {
             <div className="meta">
               <span>{`${props.rankInfo.wins} - ${props.rankInfo.losses}`}</span>
             </div>
-            <div className="extra">
+            <div className="meta">
               <span>{`${winPercentage}% WR`}</span>
             </div>
           </React.Fragment>
