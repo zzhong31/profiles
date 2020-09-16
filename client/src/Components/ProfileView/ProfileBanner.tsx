@@ -27,7 +27,7 @@ export default (props: IProps) => {
                 >
                   <img
                     alt="profile icon"
-                    src={`../Assets/profileicon/${userAccount?.profileIconId}.png`}
+                    src={`https://leagueassets-zz.s3.us-east-2.amazonaws.com/Assets/profileicon/${userAccount?.profileIconId}.png`}
                   />
                 </div>
                 <div className="middle aligned content">
