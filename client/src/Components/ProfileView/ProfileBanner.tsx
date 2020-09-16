@@ -1,6 +1,5 @@
 import React from 'react';
 
-import championBanner from '../../Assets/img/champion/splash/Annie_12.jpg';
 import { AccountMetadata } from '../../../../src/routes/BasicAccountInfo';
 
 interface IProps {
@@ -16,7 +15,7 @@ export default (props: IProps) => {
           <div
             className="ui segment"
             style={{
-              backgroundImage: `url(${championBanner})`,
+              backgroundImage: `url(../Assets/splash/Annie_12.jpg)`,
               backgroundPosition: 'center bottom'
             }}
           >
