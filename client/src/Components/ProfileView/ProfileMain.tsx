@@ -27,7 +27,7 @@ export default (props: IProps) => {
       let userInfo: any;
       try {
         userInfo = await axios.get(
-          `http://localhost:5000/api/account/basicinfo/${realm}/${userName}`
+          `/api/account/basicinfo/${realm}/${userName}`
         );
       } catch (err) {
         setInvalidSearch(true);
