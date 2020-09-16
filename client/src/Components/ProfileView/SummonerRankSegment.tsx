@@ -1,11 +1,14 @@
 import React from 'react';
 import SummonerRankItem from './SummonerRankItem';
+import GetWindowDimensions from '../../Helpers/GetWindowDimensions';
 
 interface IProps {
   selectedRankInfo: any[];
 }
 export default (props: IProps) => {
   const { selectedRankInfo } = props;
+
+  const windowDimension = GetWindowDimensions().width;
 
   const checkForQueueType = (queue: string) => {
     let queueToDisplay: string = '';
@@ -39,10 +42,19 @@ export default (props: IProps) => {
 
   return (
     <div className="ui segment">
-      <div className="ui divided items">
-        {checkForQueueType('RANKED_SOLO_5x5')}
-        {checkForQueueType('RANKED_FLEX_SR')}
-      </div>
+      {windowDimension > 768 ? (
+        <div className="ui divided items">
+          {checkForQueueType('RANKED_SOLO_5x5')}
+          {checkForQueueType('RANKED_FLEX_SR')}
+        </div>
+      ) : (
+        <div className="ui two column grid">
+          <div className="two column row">
+            <div className="column">{checkForQueueType('RANKED_SOLO_5x5')}</div>
+            <div className="column">{checkForQueueType('RANKED_FLEX_SR')}</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

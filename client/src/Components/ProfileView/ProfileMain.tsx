@@ -23,6 +23,8 @@ export default (props: IProps) => {
   const { currentUserName } = props;
 
   useEffect(() => {
+    setStillLoading(true);
+
     const getProfileDetails = async (realm: string, userName: string) => {
       let userInfo: any;
       try {
@@ -35,9 +37,9 @@ export default (props: IProps) => {
       }
 
       const dataToSend: AccountMetadata = userInfo.data[0];
-      if (invalidSearch) {
-        setInvalidSearch(false);
-      }
+
+      setInvalidSearch(false);
+
       setSelectedUserInfo(dataToSend);
       setRankInfo(userInfo.data[1]);
       setStillLoading(false);
@@ -46,7 +48,7 @@ export default (props: IProps) => {
     if (currentUserName) {
       getProfileDetails('na1', currentUserName);
     }
-  }, [currentUserName, invalidSearch]);
+  }, [currentUserName]);
   return (
     <div className="ui segment" style={{ minHeight: '80px' }}>
       {invalidSearch ? (

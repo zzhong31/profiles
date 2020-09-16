@@ -4,7 +4,7 @@ import MatchHistoryRow from './MatchHistoryRow';
 export default () => {
   return (
     <div className="ui segment">
-      <div className="ui divided items">
+      <div className="ui divided unstackable items">
         <MatchHistoryRow />
         <MatchHistoryRow />
         <MatchHistoryRow />

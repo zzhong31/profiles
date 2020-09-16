@@ -16,6 +16,7 @@ export interface AccountMetadata {
 const apiKey = process.env.RIOT_API_KEY;
 
 route.get('/api/account/basicinfo/:realm/:summonerName', async (req, res) => {
+  console.log('/api/account/basicinfo/:realm/:summonerName called');
   let basicInfo: any;
   try {
     basicInfo = await axios.get(
