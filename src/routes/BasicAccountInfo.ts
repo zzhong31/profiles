@@ -56,10 +56,13 @@ route.get('/api/account/basicinfo/:realm/:summonerName', async (req, res) => {
 });
 
 route.get(
-  '/api/account/basicinfo/matchhistory/:realm/:accountId',
+  '/api/account/basicinfo/matchhistory/:realm/:accountId/:endIndex/:beginIndex',
   async (req, res) => {
+    console.log(
+      '/api/account/basicinfo/matchhistory/:realm/:accountId/:endIndex/:beginIndex called'
+    );
     const matchHistory = await axios.get(
-      `https://${req.params.realm}.api.riotgames.com/lol/match/v4/matchlists/by-account/${req.params.accountId}`,
+      `https://${req.params.realm}.api.riotgames.com/lol/match/v4/matchlists/by-account/${req.params.accountId}/?beginIndex=${req.params.beginIndex}&endIndex=${req.params.endIndex}`,
       {
         headers: {
           'X-Riot-Token': apiKey

@@ -50,10 +50,10 @@ export default (props: IProps) => {
     }
   }, [currentUserName]);
   return (
-    <div className="ui segment" style={{ minHeight: '80px' }}>
+    <div className='ui segment' style={{ minHeight: '80px' }}>
       {invalidSearch ? (
         <React.Fragment>
-          <div className="ui header center aligned">
+          <div className='ui header center aligned'>
             Summoner not found, please check your spelling
           </div>
           <div style={{ marginTop: '10px' }}>
@@ -61,13 +61,16 @@ export default (props: IProps) => {
           </div>
         </React.Fragment>
       ) : stillLoading ? (
-        <div className="ui active inverted dimmer">
-          <div className="ui text loader">Loading</div>
+        <div className='ui active inverted dimmer'>
+          <div className='ui text loader'>Loading</div>
         </div>
       ) : (
         <React.Fragment>
           <ProfileBanner selectedProfile={selectedUserInfo} />
-          <MatchHistorySegment selectedRankInfo={rankInfo} />
+          <MatchHistorySegment
+            selectedRankInfo={rankInfo}
+            selectedProfile={selectedUserInfo}
+          />
         </React.Fragment>
       )}
     </div>
