@@ -3,6 +3,7 @@ import axios from 'axios';
 import MatchHistoryRow from './MatchHistoryRow';
 import { AccountMetadata } from '../../../../src/routes/BasicAccountInfo';
 import * as champions from '../../Helpers/champion.json';
+import * as queues from '../../Helpers/queues.json';
 
 interface IProps {
   selectedRankInfo: [];
@@ -35,6 +36,7 @@ export default (props: IProps) => {
           key={match.gameId}
           match={match}
           champions={champions}
+          queues={queues}
         />
       );
     });
