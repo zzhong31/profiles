@@ -17,7 +17,8 @@ export default () => {
     <div
       style={{
         position: 'relative',
-        minHeight: '100vh'
+        minHeight: '100vh',
+        backgroundColor: 'rgba(136,240,240,0.5)'
       }}
     >
       <TopMenu handleFormSubmit={searchValueChanged} />
